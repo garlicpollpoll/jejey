@@ -4,6 +4,8 @@ import com.hhplu.hhpluscleanarch.lecture.common.LectureStatus;
 import com.hhplu.hhpluscleanarch.lecture.controller.response.LectureResponse;
 import com.hhplu.hhpluscleanarch.lecture.exception.CapacityFullException;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +15,8 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "lecture")
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Lecture {
 
     private static final int MAX_CAPACITY = 30;

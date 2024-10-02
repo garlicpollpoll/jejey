@@ -1,22 +1,25 @@
 spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/transaction?serverTimezone=UTC&characterEncoding=UTF-8
+    username: ks
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 60
+      minimum-idle: 10
   jpa:
-    show-sql: true
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
     properties:
       hibernate:
+        show_sql: true
         format_sql: true
-    defer-datasource-initialization: true
-  datasource:
-    url: jdbc:h2:mem:testdb
-    username: sa
-  h2:
-    console:
-      enabled: true
-  sql:
-    init:
-      mode: always
-      continue-on-error: true
-      data-locations: classpath:sql/data.sql
-  p6spy:
-    logLevel: DEBUG
-    log: com.p6spy.engine.spy.appender.Slf4JLogger
-    appender: com.p6spy.engine.spy.appender.Slf4JLogger
+        dialect: org.hibernate.dialect.MySQLDialect
+logging:
+  level:
+    org:
+      springframework:
+        transaction:
+          interceptor: trace
+
